@@ -5,9 +5,7 @@ const plus = document.getElementById('plus');
 const heart = document.getElementById('heart');
 const submit = document.getElementById('submit');
 const pause = document.getElementById('pause');
-
 const buttons = [minus,plus,heart,submit];
-
 let span = document.createElement('span');
 
 // initial timer conditions
@@ -46,10 +44,11 @@ function appendLike(e) {
     let li = document.getElementById(currentTime)
 
     if(li) {
-        console.log("+1 on time!");
-        li.innerHTML = `${currentTime} has been liked ${Number(span.innerHTML)} times`;
+        let text = li.innerText;
+        let textArray = text.split(" ");
+        let number = Number(textArray.slice(-2,-1));
+        li.innerHTML = `${currentTime} has been liked ${number + 1} times`;
     } else {
-        console.log("create!");
         let li = document.createElement('li');
         li.setAttribute("id",currentTime)
         likes.appendChild(li);
